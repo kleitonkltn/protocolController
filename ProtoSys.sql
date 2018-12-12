@@ -9,7 +9,7 @@ CREATE TABLE departamento  (
   );
 
 CREATE TABLE    usuario  (
-   idusuario  INT NOT NULL,
+   idusuario  INT NOT NULL AUTO_INCREMENT,,
    nome  VARCHAR(255) NOT NULL,
    sobrenome  VARCHAR(255) NOT NULL,
    email  VARCHAR(255) NOT NULL,
@@ -28,9 +28,15 @@ CREATE TABLE movimentacoes  (
   );
 
 
-CREATE TABLE TIPOdocumento  (
-   iddocumento  INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE tipoDocumento  (
+   idtipodocumento  INT NOT NULL AUTO_INCREMENT,
    nome  VARCHAR(255) NOT NULL,
+  PRIMARY KEY ( idtipodocumento  )
+  );
+
+CREATE TABLE documento(
+   iddocumento  INT NOT NULL AUTO_INCREMENT,
+   descricao VARCHAR(255) NOT NULL,
   PRIMARY KEY ( iddocumento )
   );
 
@@ -47,5 +53,6 @@ CREATE TABLE protocolo  (
   );
 ALTER TABLE usuario ADD CONSTRAINT  fk_Usuario_departamento1 FOREIGN KEY ( departamento ) REFERENCES   departamento  ( iddepartamento );
 ALTER TABLE protocolo ADD  CONSTRAINT  fk_protocolo_movimentacoes1 FOREIGN KEY ( movimentacoes )REFERENCES movimentacoes  ( idmovimentacoes );
-ALTER TABLE protocolo ADD  CONSTRAINT  fk_protocolo_TIPOdocumento1 FOREIGN KEY ( TIPOdocumento )REFERENCES TIPOdocumento  ( iddocumento );
+ALTER TABLE protocolo ADD  CONSTRAINT  fk_protocolo_TIPOdocumento1 FOREIGN KEY ( tipoDocumento  )REFERENCES tipoDocumento  ( idtipodocumento  );
+ALTER TABLE protocolo ADD  CONSTRAINT  fk_protocolo_documento1 FOREIGN KEY ( documento) REFERENCES documento( iddocumento);
 ALTER TABLE protocolo ADD CONSTRAINT  fk_protocolo_Usuario1 FOREIGN KEY ( Usuario )REFERENCES Usuario  ( idusuario );

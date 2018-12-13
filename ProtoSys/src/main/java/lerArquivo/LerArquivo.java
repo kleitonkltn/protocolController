@@ -50,9 +50,7 @@ public class LerArquivo {
                 listUsuarios.add(usuario);
                 linha = lerArq.readLine();
             }
-            for (int j = 0; j < listUsuarios.size(); j++) {
-                System.out.println(listUsuarios.get(j));
-            }
+            
             arq.close();
         } catch (IOException e) {
             e.getMessage();
